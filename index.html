@@ -4,6 +4,7 @@
         <title>Passwords</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="lib/bootstrap-3.0.0/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link href="styles/app.css" rel="stylesheet">
     </head>
     <body>
         <div class="container">
@@ -16,18 +17,108 @@
                         <h1>Random password generator</h1>
                     </div>
                 </div>
-                <p class="lead">Generate random password meeting various requirements.</p>
+                <p class="lead">Generate a random password meeting user-specified requirements.</p>
             </div>
 
             <div>
                 <div class="row">
                     <div class="col-md-12">
-                        <button id="create-btn" type="button" class="btn btn-default">Generate password</button>
+                        <table class="table table-striped">
+                            <thead>
+                                <th>Required</th>
+                                <th>Allowed</th>
+                                <th>Character group</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <input type="radio" name="lowercase" id="lowercase-required" value="required">
+                                    </td>
+                                    <td>
+                                        <input type="radio" name="lowercase" id="lowercase-allowed" value="allowed" checked>
+                                    </td>
+                                    <td>
+                                        Lowercase letters (a-z)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="radio" name="uppercase" id="uppercase-required" value="required">
+                                    </td>
+                                    <td>
+                                        <input type="radio" name="uppercase" id="uppercase-allowed" value="allowed" checked>
+                                    </td>
+                                    <td>
+                                        Uppercase letters (A-Z)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="radio" name="digits" id="digits-required" value="required">
+                                    </td>
+                                    <td>
+                                        <input type="radio" name="digits" id="digits-allowed" value="allowed" checked>
+                                    </td>
+                                    <td>
+                                        Decimal digits (0-9)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="radio" name="special" id="special-required" value="required">
+                                    </td>
+                                    <td>
+                                        <input type="radio" name="special" id="special-allowed" value="allowed" checked>
+                                    </td>
+                                    <td>
+                                        ASCII special characters (!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~)
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <p>Password goes here</p>
+                        <h4>Other required characters:</h4>
+                        <div class="row">
+                            <div class="col-md-6">
+                                Enter up to 3 strings of required character groups, separated by whitespace:
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" placeholder="!'# ${}/">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-2">
+                                Password length:
+                            </div>
+                            <div class="col-md-1">
+                                <input type="text" class="form-control" value="12">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row margin-top-md">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <button id="create-btn" type="button" class="btn btn-default">Generate password</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row margin-top-md">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-3">
+                                New password
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
