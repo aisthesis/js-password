@@ -20,39 +20,46 @@
                 <p class="lead">Generate a random password meeting user-specified requirements.</p>
             </div>
 
-            <div>
+            <div id="app">
                 <div class="row">
                     <div class="col-md-12">
                         <table class="table table-striped">
                             <thead>
                                 <th>Required</th>
                                 <th>Allowed</th>
+                                <th>Excluded</th>
                                 <th>Character group</th>
                             </thead>
                             <tbody>
-                                <tr>
+                                <tr id="lowercase">
                                     <td>
-                                        <input type="radio" name="lowercase" id="lowercase-required" value="required">
+                                        <input type="radio" name="lowercase" id="lowercase-required" value="required" checked>
                                     </td>
                                     <td>
-                                        <input type="radio" name="lowercase" id="lowercase-allowed" value="allowed" checked>
+                                        <input type="radio" name="lowercase" id="lowercase-allowed" value="allowed">
+                                    </td>
+                                    <td>
+                                        <input type="radio" name="lowercase" id="lowercase-excluded" value="excluded">
                                     </td>
                                     <td>
                                         Lowercase letters (a-z)
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr id="uppercase">
                                     <td>
-                                        <input type="radio" name="uppercase" id="uppercase-required" value="required">
+                                        <input type="radio" name="uppercase" id="uppercase-required" value="required" checked>
                                     </td>
                                     <td>
-                                        <input type="radio" name="uppercase" id="uppercase-allowed" value="allowed" checked>
+                                        <input type="radio" name="uppercase" id="uppercase-allowed" value="allowed">
+                                    </td>
+                                    <td>
+                                        <input type="radio" name="uppercase" id="uppercase-excluded" value="excluded">
                                     </td>
                                     <td>
                                         Uppercase letters (A-Z)
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr id="digits">
                                     <td>
                                         <input type="radio" name="digits" id="digits-required" value="required">
                                     </td>
@@ -60,22 +67,41 @@
                                         <input type="radio" name="digits" id="digits-allowed" value="allowed" checked>
                                     </td>
                                     <td>
+                                        <input type="radio" name="digits" id="digits-excluded" value="excluded">
+                                    </td>
+                                    <td>
                                         Decimal digits (0-9)
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr id="special">
                                     <td>
                                         <input type="radio" name="special" id="special-required" value="required">
                                     </td>
                                     <td>
-                                        <input type="radio" name="special" id="special-allowed" value="allowed" checked>
+                                        <input type="radio" name="special" id="special-allowed" value="allowed">
                                     </td>
                                     <td>
-                                        ASCII special characters (!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~)
+                                        <input type="radio" name="special" id="special-excluded" value="excluded" checked>
+                                    </td>
+                                    <td>
+                                        ASCII special characters (!"#$%&'()*+,-./:;&lt;=&gt;?@[\]^_`{|}~)
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>Other allowed characters:</h4>
+                        <div class="row">
+                            <div class="col-md-6">
+                                Enter a string containing any additional allowed characters:
+                            </div>
+                            <div class="col-md-6">
+                                <input id="other-allowed" type="text" class="form-control" placeholder="!'#${}/">
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="row">
@@ -86,7 +112,7 @@
                                 Enter up to 3 strings of required character groups, separated by whitespace:
                             </div>
                             <div class="col-md-6">
-                                <input type="text" class="form-control" placeholder="!'# ${}/">
+                                <input id="other-required" type="text" class="form-control" placeholder="!'# ${}/">
                             </div>
                         </div>
                     </div>
@@ -98,7 +124,7 @@
                                 Password length:
                             </div>
                             <div class="col-md-1">
-                                <input type="text" class="form-control" value="12">
+                                <input id="length" type="text" class="form-control" value="12">
                             </div>
                         </div>
                     </div>
@@ -115,8 +141,8 @@
                 <div class="row margin-top-md">
                     <div class="col-md-12">
                         <div class="row">
-                            <div class="col-md-3">
-                                New password
+                            <div class="col-md-12">
+                                Password: <span id="password">password</span>
                             </div>
                         </div>
                     </div>
@@ -129,5 +155,10 @@
         <script src="lib/jquery-ui-1.10.3.min.js"></script>
         <script src="lib/underscore-1.5.2.min.js"></script>
         <script src="lib/backbone-1.1.0.min.js"></script>
+        <script src="usr/uniq.js"></script>
+        <script src="usr/shuffle.js"></script>
+        <script src="scripts/views/radio-group-view.js"></script>
+        <script src="scripts/views/app-view.js"></script>
+        <script src="scripts/app-init.js"></script>
     </body>
 </html>
