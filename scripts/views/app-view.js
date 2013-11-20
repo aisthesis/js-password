@@ -34,6 +34,8 @@ var codeMelon = codeMelon || {};
             };
             this.LENGTH_SELECTOR = '#length';
             this.PASSWORD_SELECTOR = '#password';
+            this.OTHER_ALLOWED_SELECTOR = '#other-allowed';
+            this.OTHER_REQUIRED_SELECTOR = '#other-required';
         },
 
         initMembers: function(options) {
@@ -104,19 +106,31 @@ var codeMelon = codeMelon || {};
                     ret += this.RADIO_GROUPS[key];
                 }
             }
-            return _c.utils.uniq(ret).join('');
+            ret += $(this.OTHER_ALLOWED_SELECTOR).val();
+            ret += $(this.OTHER_REQUIRED_SELECTOR).val();
+            // remove possible whitespace and duplicates
+            return _c.utils.uniq(ret.replace(/\s/g, '')).join('');
         },
 
         getRequired: function() {
             var ret = [],
+                otherRequired,
                 key,
-                value;
+                value,
+                i;
 
             for (key in this.RADIO_GROUPS) {
                 value = this.radioGroupViews[key].getValue();
                 if (value === 'required') {
                     ret.push(this.RADIO_GROUPS[key]);
                 }
+            }
+            otherRequired = $(this.OTHER_REQUIRED_SELECTOR).val().match(/\S+/g);
+            if (otherRequired !== null && otherRequired.length > 0) {
+                for (i = 0; i < otherRequired.length; i++) {
+                    otherRequired[i] = _c.utils.uniq(otherRequired[i]).join('');
+                }
+                Array.prototype.push.apply(ret, otherRequired);
             }
             return _c.utils.uniq(ret);
         },
