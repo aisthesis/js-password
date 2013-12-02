@@ -1,4 +1,4 @@
-var codeMelon = codeMelon || {};
+var _c = _c || {};
 
 (function(_c) {
     "use strict";
@@ -157,4 +157,4 @@ var codeMelon = codeMelon || {};
             }, 800);
         }
     });
-})(codeMelon);
+})(_c);

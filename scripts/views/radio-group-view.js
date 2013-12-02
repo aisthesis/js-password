@@ -1,4 +1,4 @@
-var codeMelon = codeMelon || {};
+var _c = _c || {};
 
 (function(_c) {
     "use strict";
@@ -20,4 +20,4 @@ var codeMelon = codeMelon || {};
             return this.$el.find('input[name=' + this.GROUP_NAME + ']:checked').val();
         }
     });
-})(codeMelon);
+})(_c);
